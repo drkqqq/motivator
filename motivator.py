@@ -134,7 +134,7 @@ def main_keyboard():
 
 def ask_gemini(prompt_text, is_vision=False, image_data=None):
     instruction = "Ты эксперт по акне и отказу от курения. Стиль: лаконичный, жесткий. Без звездочек."
-    models = ['gemini-3.1-pro-preview', 'gemini-3-flash-preview', 'gemini-3.1-flash-lite-preview', 'gemini-flash-latest', 'gemini-2.0-flash', 'gemini-1.5-flash']
+    models = ['gemini-3.1-pro-preview', 'gemini-3-flash-preview', 'gemini-3.1-flash-lite-preview', 'gemini-flash-latest']
     img = Image.open(io.BytesIO(image_data)) if is_vision else None
     for m in models:
         try:
