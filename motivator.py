@@ -36,7 +36,7 @@ def load_data():
                 return data
         except: pass
     return {
-        'quit_date': datetime(2025, 4, 5, 0, 0), # Дефолт
+        'quit_date': datetime(2026, 4, 6, 0, 0), # Дефолт
         'sos_survived': 0,
         'skincare_am': False,
         'skincare_pm': False,
