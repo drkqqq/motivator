@@ -134,14 +134,24 @@ def main_keyboard():
 
 def ask_gemini(prompt_text, is_vision=False, image_data=None):
     instruction = "Ты эксперт по акне и отказу от курения. Стиль: лаконичный, жесткий. Без звездочек."
+    # Список актуальных моделей (исправлены названия для библиотеки google-genai)
     models = ['gemini-3.1-pro-preview', 'gemini-3-flash-preview', 'gemini-3.1-flash-lite-preview', 'gemini-flash-latest']
+    
     img = Image.open(io.BytesIO(image_data)) if is_vision else None
+    
     for m in models:
         try:
-            res = client.models.generate_content(model=m, contents=[instruction + "\n" + prompt_text, img] if img else instruction + "\n" + prompt_text)
-            return res.text.replace('*', '')
-        except: continue
-    return "Ошибка ИИ."
+            res = client.models.generate_content(
+                model=m, 
+                contents=[instruction + "\n" + prompt_text, img] if img else instruction + "\n" + prompt_text
+            )
+            # Добавляем название модели в конец сообщения
+            return res.text.replace('*', '') + f"\n\n⚙️ Engine: {m}"
+        except Exception as e:
+            print(f"Ошибка модели {m}: {e}")
+            continue
+            
+    return "❌ Ошибка ИИ: все модели перегружены или квота исчерпана."
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
