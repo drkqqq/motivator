@@ -32,7 +32,7 @@ GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY')
 ADMIN_ID = int(os.environ.get('ADMIN_ID', 531078672))
 
 # Дата отказа от курения (Год, Месяц, День)
-QUIT_DATE = datetime(2025, 4, 5) 
+QUIT_DATE = datetime(2026, 4, 5) 
 DAILY_COST = 142.5 
 CIGARETTES_PER_DAY = 10 
 
