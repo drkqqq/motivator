@@ -99,7 +99,7 @@ def generate_prime_card(days_clean, saved_money, avoided_cigs, sos_count):
     draw.text((40, 270), f"{sos_count} РАЗ", font=font_med, fill=accent_color)
 
     # Время обновления по МСК
-    draw.text((430, 280), f"Обновлено (МСК): {get_now().strftime('%d.%m.%Y %H:%M')}", font=font_small, fill=(80, 80, 80))
+    draw.text((430, 280), f"Обновлено: {get_now().strftime('%d.%m.%Y %H:%M')}", font=font_small, fill=(80, 80, 80))
 
     bio = io.BytesIO()
     img.save(bio, 'PNG')
