@@ -239,8 +239,13 @@ def process_ingredient_check(message):
 def handle_photo(message):
     if message.chat.id != ADMIN_ID: return
     bot.send_chat_action(message.chat.id, 'typing')
+    
+    # Получаем информацию о файле
     file_info = bot.get_file(message.photo[-1].file_id)
-    downloaded_file = bot.download_file(file_info.path)
+    
+    # ОШИБКА БЫЛА ЗДЕСЬ: заменяем .path на .file_path
+    downloaded_file = bot.download_file(file_info.file_path) 
+    
     bot.send_message(message.chat.id, ask_gemini("Оцени лицо/состав.", is_vision=True, image_data=downloaded_file))
 
 def get_routine_keyboard():
